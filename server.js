@@ -40,7 +40,7 @@ models.sequelize.sync({force:true}) // {force:true} drops the table everytime th
 
 .then(function(){
 
-	return models.Manager.create({
+	return models.Burgers.create({
 		name: "Hawaian Burger",
 		devoured: "true",
 	})

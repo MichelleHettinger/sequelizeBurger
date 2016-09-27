@@ -5,8 +5,8 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Burgers = sequelize.define('Burgers', {
-    name: {DataTypes.STRING, allNull: false},
-    devoured: {DataTypes.BOOLEAN, allNull: false, defaultValue: true}
+    name: {type: DataTypes.STRING, allNull: false},
+    devoured: {type: DataTypes.BOOLEAN, allNull: false, defaultValue: true}
   }, {
     classMethods: {
       associate: function(models) {
