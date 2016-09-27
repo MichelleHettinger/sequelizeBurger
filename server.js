@@ -31,3 +31,18 @@ app.set('view engine', 'handlebars');
 app.use('/', routes);
 
 app.listen(PORT);
+
+
+//Bring in Sequelize models object
+var models = require('./models')
+
+models.sequelize.sync({force:true}) // {force:true} drops the table everytime the server starts.
+
+.then(function(){
+
+	return models.Manager.create({
+		name: "Hawaian Burger",
+		devoured: "true",
+	})
+
+})
