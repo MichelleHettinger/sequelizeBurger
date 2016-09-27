@@ -8,10 +8,10 @@
       <h2>Burgers you've eaten!</h2>
 
         <ul>
-          {{#each burgers}}
+          {{#each burger_data}}
             {{#unless this.devoured}}
               <li>
-                {{this.burger_name}}
+                {{this.name}}
 
                 <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
                   <input type="hidden" name="devoured" value="1">
@@ -26,10 +26,10 @@
     <div class="col-sm-4">
       <h2>Burgers to devour!</h2>
       <ul>
-        {{#each burgers}}
+        {{#each burger_data}}
           {{#if this.devoured}}
             <li>
-              {{this.burger_name}}
+              {{this.name}}
 
               <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
                 <input type="hidden" name="devoured" value="0">

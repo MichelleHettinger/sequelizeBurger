@@ -2,7 +2,7 @@ var express = require("express");
 var mo = require("method-override");
 var bp = require("body-parser");
 
-var burger = require("../models/burgers.js");
+var Burgers = require("../models/")["Burgers"];
 var router = express.Router();
 
 router.get('/', function(req,res) {
@@ -11,11 +11,14 @@ router.get('/', function(req,res) {
 
 //Read
 router.get('/burgers', function(req,res) {
-	burger.selectAll('events', function(data){
-		var hbsObject = {burgers : data}
-		// console.log(hbsObject)
-		res.render('index', hbsObject);
-	});
+    // replace old function with sequelize function
+    Burgers.findAll()
+    // use promise method to pass the burgers...
+    .then(function(burger_data){
+        console.log(burger_data);
+        // into the main index, updating the page
+        return res.render('index', {burger_data})
+    }); 
 });
 
 //Create
